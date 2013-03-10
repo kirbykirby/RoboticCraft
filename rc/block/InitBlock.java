@@ -4,6 +4,9 @@ public class InitBlock {
 	
 	
 	
+	/**
+	 * 
+	 */
 	public InitBlock() {
 
 		
@@ -18,6 +21,9 @@ public class InitBlock {
 		registerBlock();
 	}
 
+	/**
+	 * 
+	 */
 	private void registerBlock() {
 		// TODO Auto-generated method stub
 		
