@@ -1,5 +1,6 @@
 package rc.core;
 
+import rc.block.InitBlock;
 import net.minecraft.creativetab.CreativeTabs;
 
 public class RcCreativeTab extends CreativeTabs{
@@ -10,15 +11,15 @@ public class RcCreativeTab extends CreativeTabs{
 	}
 
 	
-	/*@Override
+	@Override
 	public int getTabIconItemIndex() {
-		return XXX;
+		return InitBlock.BlockOreTi.blockID;
 	}
 	@Override
 	public String getTranslatedTabLabel()
     {
-        return OOO;
-    }*/
+        return "RobotiCraft";
+    }
 
 	
 }

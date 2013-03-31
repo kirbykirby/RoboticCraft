@@ -1,6 +1,7 @@
 package rc.item;
 
 public class InitItem {
+	
 	public InitItem(){
 		
 		

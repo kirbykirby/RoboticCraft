@@ -4,6 +4,9 @@ import java.io.File;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
+import rc.block.InitBlock;
+import rc.entity.InitEntity;
+import rc.item.InitItem;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -29,6 +32,9 @@ import cpw.mods.fml.relauncher.Side;
 @NetworkMod(channels = {RoboticCraft.CHANNEL},clientSideRequired = true, serverSideRequired = false)
 public class RoboticCraft {
 
+	/**
+	 * 实例
+	 */
 	@Instance(RoboticCraft.MOD_ID)
 	public static RoboticCraft instance ;
 
@@ -39,39 +45,44 @@ public class RoboticCraft {
 						serverSide = "rc.core.CommonProxy")
 	public static CommonProxy proxy;
 
-	/**
-	 * 方块和物品的贴图
-	 */
-	public static final String BLOCK_TEX = "/rcBlock.png";
-	public static final String ITEM_TEX = "/rcItem.png";
+	
 	
 	/**
 	 * Mod基本信息
 	 */
 	public static final String MOD_ID = "rc";
 	public static final String MOD_NAME = "RoboticCraft";
-	public static final String MOD_VER = "Indev";
+	//这个是内部的版本，要经常改的哟
+	public static final String MOD_VER = "0.0.0.1";
+	//这个是对外宣传的版本
+	public static final String MOD_WAIBU_VER = "Indev";
+	
 	public static final String CHANNEL = "RoboticCraft";
 
 	/**
 	 * 各种路径
 	 */
-	public static final String CONFIG_FILE = "RoboticCraft/RoboticCraft.conf";
+	public static final String CONFIG_FILE = "RoboticCraft/main.conf";
 
 	
 	
 	
+	/**
+	 * 创造栏
+	 */
 	public static final CreativeTabs RC_TAB = 
 			new RcCreativeTab(CreativeTabs.getNextID(), RoboticCraft.CHANNEL);
 
+	public static ConfigManager cfg;
 	/**
 	 * @param event
 	 */
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event) {
-//		new InitBlock();
-//		new InitItem();
-//		new InitEntity();
+		
+		new InitBlock();
+		new InitItem();
+		new InitEntity();
 		
 		
 		
@@ -80,6 +91,8 @@ public class RoboticCraft {
 		MinecraftForge.EVENT_BUS.register(new RcSoundManager());
 
 		TickRegistry.registerTickHandler(new TickHandlerClient(), Side.CLIENT);
+		
+		
 	}
 
 	/**

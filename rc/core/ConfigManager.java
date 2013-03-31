@@ -6,64 +6,40 @@ import java.util.logging.Level;
 import net.minecraftforge.common.Configuration;
 import cpw.mods.fml.common.FMLLog;
 
-public class ConfigManager {
-
-	public static Boolean isCfgLoaded ;
+public class ConfigManager{
 	
-	public static Configuration configuration; 
+	private static boolean loaded;
+	
+	public static Configuration cfg;
+	
+	public static int idTi;
 	
 	/**
 	 * @param file
 	 */
-	public ConfigManager(File file)
-	{
-		if (!ConfigManager.isCfgLoaded)
+	public ConfigManager(File file) {
+		if (!loaded)
 		{
-			ConfigManager.configuration = new Configuration(file);
-			this.setValues();
+			cfg = new Configuration(file);
+			this.setVaules();
 		}
 	}
 
 	
-	/**
-	 * 方块id
-	 */
-	public static int idBlockXXX;
-	
-	
-	
-	
-	/**
-	 * 物品id
-	 */
-	public static int idItemOOO;
-	
-	
-	
-	
-	private void setValues() {
-		try
-		{
-	        ConfigManager.configuration.load();
-	        
-	        
-	        
-	        
-	        
-	        
-	        
-	        
-	        
-	        
+	public void setVaules(){
+		try {
+			cfg.load();
+			
+			idTi = cfg.get(Configuration.CATEGORY_BLOCK,"OreTi",2223).getInt(2223);
+			
+			
 		}
-		catch (final Exception e)
+		catch (Exception e)
 		{
-			FMLLog.log(Level.SEVERE, e, "RoboticCraft has a problem loading it's configuration");
+			FMLLog.log(Level.SEVERE, e, "RobotiCraft mod has a problem loading it's configuration");
+		}finally {
+			cfg.save();
+			ConfigManager.loaded = true;
 		}
-		finally
-		{
-			ConfigManager.configuration.save();
-			ConfigManager.isCfgLoaded = true;
-		}
-	};
+	}
 }
