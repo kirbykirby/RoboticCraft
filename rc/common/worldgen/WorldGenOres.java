@@ -4,7 +4,6 @@ import java.util.Random;
 
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.feature.WorldGenMinable;
 import rc.common.block.InitBlock;
 import cpw.mods.fml.common.IWorldGenerator;
 
@@ -15,21 +14,27 @@ public class WorldGenOres implements IWorldGenerator{
     {
             switch(world.provider.dimensionId)
             {
-            case 1 : generateSurface(world, random, chunkX * 16, chunkZ * 16);
-            case 2 : generateNether(world, random, chunkX * 16, chunkZ * 16);
-            case 3 : generateEnd(world, random, chunkX * 16, chunkZ * 16);
+            case -1 : 
+            	generateNether(world, random, chunkX * 16, chunkZ * 16);
+            	break;
+            case 0 : 
+            	generateSurface(world, random, chunkX * 16, chunkZ * 16);
+            	break;
+            case 1 :
+            	generateEnd(world, random, chunkX * 16, chunkZ * 16);
+            	break;
             }
     }
 
     private void generateSurface(World world, Random random, int chunkX, int chunkZ)
     {
-            for(int i = 0; i < 100; i++)
+            for(int i = 0; i < 30; i++)
             {
                     int xCoord = chunkX + random.nextInt(16);
                     int yCoord = random.nextInt(70);
                     int zCoord = chunkZ + random.nextInt(16);
-             //       world.setBlock(xCoord, yCoord, zCoord, InitBlock.BlockOreTi.blockID);
-                    (new WorldGenMinable(InitBlock.BlockOreTi.blockID, 14)).generate(world, random, xCoord, yCoord, zCoord);
+                    world.setBlock(xCoord, yCoord, zCoord,InitBlock.BlockOreTi.blockID);
+//                    (new WorldGenMinable(InitBlock.BlockOreTi.blockID, 14)).generate(world, random, xCoord, yCoord, zCoord);
             }
        
     }

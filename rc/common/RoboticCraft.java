@@ -75,13 +75,12 @@ public class RoboticCraft {
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event) {
 		new ConfigManager(new File(event.getModConfigurationDirectory(), CONFIG_FILE));
-		new InitBlock();
-		new InitItem();
+		
 //		new InitEntity();
 		
 //		MinecraftForge.EVENT_BUS.register(new RcSoundManager());
 
-		GameRegistry.registerWorldGenerator(new WorldGenOres());
+		
 		
 //		TickRegistry.registerTickHandler(new TickHandlerClient(), Side.CLIENT);
 		rc.common.utils.Localization.addLocalization("/rc/lang/", "en_US");
@@ -94,8 +93,11 @@ public class RoboticCraft {
 	 */
 	@Init
 	public void init(FMLInitializationEvent event) {
+		new InitBlock();
+		new InitItem();
+		GameRegistry.registerWorldGenerator(new WorldGenOres());
 		
-
+		
 	}
 
 	/**

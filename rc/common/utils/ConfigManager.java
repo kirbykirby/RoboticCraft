@@ -21,12 +21,12 @@ public class ConfigManager{
 		if (!loaded)
 		{
 			cfg = new Configuration(file);
-			this.setVaules();
+			setVaules();
 		}
 	}
 
 	
-	public void setVaules(){
+	private void setVaules(){
 		try {
 			cfg.load();
 			
