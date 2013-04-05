@@ -11,9 +11,8 @@ import rc.common.RoboticCraft;
 
 
 /**
- * Simple mod localization class.
- * @author Jimeo Wan
- * @license Public domain
+ * Mod localization class.
+ * @author dengz
  */
 public class Localization {
 

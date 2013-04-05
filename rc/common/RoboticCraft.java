@@ -6,6 +6,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import rc.common.block.InitBlock;
 import rc.common.item.InitItem;
 import rc.common.utils.ConfigManager;
+import rc.common.worldgen.WorldGenOres;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -20,6 +21,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartedEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * @author kirby,hendyzone
@@ -79,6 +81,8 @@ public class RoboticCraft {
 		
 //		MinecraftForge.EVENT_BUS.register(new RcSoundManager());
 
+		GameRegistry.registerWorldGenerator(new WorldGenOres());
+		
 //		TickRegistry.registerTickHandler(new TickHandlerClient(), Side.CLIENT);
 		rc.common.utils.Localization.addLocalization("/rc/lang/", "en_US");
 		
